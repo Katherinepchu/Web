@@ -1,0 +1,108 @@
+<?Php 
+$cnx = mysql_connect("localhost","root","");
+mysql_select_db("alondra");
+
+?>
+<form name="form" method="post" action="insertarreserva.php" enctype="multipart/form-data">
+<table width="900px" height="250px" border=10  align="center"  >
+<font size=20 color="teal"><fieldset><legend> Nuevo Producto</legend></font>
+	<tr>
+		<td>  <font size=5 face="Arial" color="teal">Imagen:</font> </td>
+		
+		<td><input type="file"style="height:20px;" name="imagen" class="form-control" ></td>
+	</tr>
+	
+		<tr>
+<Td> <font size=5 face="Arial" color="teal">Nombre:</font></td>
+<td><input type ="text" style="width:200px; height:20px;" name="nombre"  class="form-control" placeholder="Nombre del Producto" ></td>
+
+</tr>
+<tr>
+<Td><font size=5 face="Arial"color="teal"> Categoria:</font></td>
+<td><SELECT name="categoria" style="width:200px; height:20px;">
+<option value="">---------</option>
+
+
+<!--- conexion de base de dato en select-->
+<?php  
+             
+              $query= "SELECT * FROM categoria "; 
+                 $resultado = mysql_query($query);
+               
+              while($lista = mysql_fetch_array($resultado)){ 
+          
+               
+               echo " <option value='".$lista["codigo"]."'>".$lista["categoria"]."</option>"; 
+
+              } 
+              ?> 
+
+</SELECT>
+ </td>
+   
+
+
+
+</tr>
+<tr>
+<Td><font size=5 face="Arial"color="teal"> Marca:</font></td>
+<td><SELECT name="marca"style="width:200px; height:20px;">
+<option value="">----------</option>
+
+<?php  
+             
+              $query= "SELECT * FROM marca "; 
+                 $resultado = mysql_query($query);
+               
+              while($lista = mysql_fetch_array($resultado)){ 
+          
+               
+               echo " <option value='".$lista["codigo"]."'>".$lista["marca"]."</option>"; 
+
+              } 
+              ?> 
+
+
+</SELECT>
+</td>
+
+</tr>
+<tr>
+<Td><font size=5 face="Arial" color="teal"> Descripción:</font></td>
+<td><input type ="text" name="descripcion" style="width:200px; height:20px;" class="form-control"placeholder="Descripción" ></td>
+
+</tr>
+<tr>
+<Td><font size=5 face="Arial" color="teal"> Precio Unitario:</font></td>
+<td><input type ="text" name="precio"  style="width:200px; height:20px;"class="form-control" placeholder="Precio Unitario"></td>
+
+</tr>
+<tr>
+<Td><font size=5 face="Arial" color="teal"> Stock:</font></td>
+<td><input type ="text" name="cantidad" style="width:200px; height:20px;" class="form-control"placeholder="Cantidad" ></td>
+
+</tr>
+
+<tr>
+
+<tr>
+<td colspan="2" align="center">
+<input type="button" onclick="GuardarProducto();" font size=5 color="black" style="width:230px; height:30px; background:teal; margin-top:6px; font-size: x-large;" value="Guardar Producto">
+
+</td>
+
+
+</tr>
+	
+				
+		</table>
+		
+		</fieldset>
+		
+</form>
+
+
+
+
+
+

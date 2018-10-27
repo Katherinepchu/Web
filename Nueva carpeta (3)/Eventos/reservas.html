@@ -1,0 +1,118 @@
+<?Php 
+$cnx = mysql_connect("localhost","root","");
+mysql_select_db("alondra");
+
+?>
+<form name="form" method="post" action="insertarreserva.php" enctype="multipart/form-data">
+<table width="900px" height="250px" border=10  align="center"  >
+	<tr>
+<Td><font size=5 face="Arial"color="teal"> Tipo de Eventos:</font></td>
+<td><SELECT name="tipoeventos"style="width:200px; height:20px;">
+<option value="">----------</option>
+
+<?php  
+             
+              $query= "SELECT * FROM tipoeventos "; 
+                 $resultado = mysql_query($query);
+               
+              while($lista = mysql_fetch_array($resultado)){ 
+          
+               
+               echo " <option value='".$lista["idtipoevento"]."'>".$lista["tipoeventos"]."</option>"; 
+
+              } 
+              ?> 
+
+
+</SELECT>
+</td>
+
+</tr>
+	<tr>
+<Td><font size=5 face="Arial"color="teal"> Marco de Eventos:</font></td>
+<td><SELECT name="marco"style="width:200px; height:20px;">
+<option value="">----------</option>
+
+<?php  
+             
+              $query= "SELECT * FROM marcoevento "; 
+                 $resultado = mysql_query($query);
+               
+              while($lista = mysql_fetch_array($resultado)){ 
+          
+               
+               echo " <option value='".$lista["idmarcoevento"]."'>".$lista["marcoevento"]."</option>"; 
+
+              } 
+              ?> 
+
+
+</SELECT>
+</td>
+
+</tr>
+
+<tr>
+<Td><font size=5 face="Arial" color="teal">Número Invitados:</font></td>
+<td><input type ="text" name="invitado"  style="width:200px; height:20px;"class="form-control" placeholder="#"></td>
+
+</tr>
+<tr>
+			<b><input type="text" name="Fecha" placeholder="Fecha" value="<?php echo date("d/m/Y") ; ?>" readonly="readonly" required/></b>
+			
+			</tr>
+            <tr>
+<Td><font size=5 face="Arial" color="teal">Nombres:</font></td>
+<td><input type ="text" name="nombre"  style="width:200px; height:20px;"class="form-control" placeholder="Nombres"></td>
+
+</tr>
+<tr>
+<Td><font size=5 face="Arial" color="teal">Apellidos:</font></td>
+<td><input type ="text" name="apellido"  style="width:200px; height:20px;"class="form-control" placeholder="Apellidos"></td>
+
+</tr>
+<tr>
+<Td><font size=5 face="Arial" color="teal">Fecha de Nacimiento:</font></td>
+<td><input type ="text" name="fechanac"  style="width:200px; height:20px;"class="form-control" ></td>
+
+</tr>
+<tr>
+			<b><input type="text" name="correo" placeholder="Correo" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/></b>
+			</tr>
+            <tr>
+<Td><font size=5 face="Arial" color="teal">Telefonos:</font></td>
+<td><input type ="text" name="telef"  style="width:200px; height:20px;"class="form-control" ></td>
+
+</tr>
+            
+<tr>
+<Td><font size=5 face="Arial" color="teal">Mensaje:</font></td>
+<td><input type ="text" name="mensaje" style="width:200px; height:20px;" class="form-control"placeholder="Mensaje" ></td>
+
+</tr>
+
+
+
+<tr>
+
+<tr>
+<td colspan="2" align="center">
+<input type="button" onclick="GuardarProducto();" font size=5 color="black" style="width:230px; height:30px; background:teal; margin-top:6px; font-size: x-large;" value="Guardar Producto">
+
+</td>
+
+
+</tr>
+	
+				
+		</table>
+		
+		</fieldset>
+		
+</form>
+
+
+
+
+
+
